@@ -10,8 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "preinstall": "npm i -g tspath",
-    "postinstall": "tspath -f"
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
