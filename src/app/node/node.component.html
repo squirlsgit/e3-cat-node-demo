@@ -1,6 +1,6 @@
 
 
-<ng-container *ngIf="node != null || !ref.istooDeepNode(node.record.Id) ; else Empty">
+<ng-container *ngIf="node != null && !ref.istooDeepNode(node.record) ; else Empty">
   <div [style.marginLeft]="'1em'" [style.width]="'calc(100% - 1em)'">
     <ng-container [ngTemplateOutlet]="NodeCore" [ngTemplateOutletContext]="{name: this.node.record.Name, hasChildren: this.node.hasChildren}"></ng-container>
     <ng-container *ngIf="this.node.ui.show">

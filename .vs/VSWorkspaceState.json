@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src\\app",
+    "\\src\\app\\display-nodes",
+    "\\src\\app\\hub",
+    "\\src\\app\\main",
+    "\\src\\app\\node",
+    "\\src\\app\\node-service",
+    "\\src\\assets",
+    "\\src\\assets\\stylesheets",
+    "\\src\\environments"
+  ],
+  "SelectedNode": "\\.editorconfig",
+  "PreviewInSolutionExplorer": false
+}
