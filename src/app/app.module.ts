@@ -8,7 +8,8 @@ import { DisplayNodesComponent } from './display-nodes/display-nodes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon'; 
-import { MatInputModule } from '@angular/material/input'; 
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip'; 
 import { MainComponent } from './main/main.component';
 import { NodeComponent } from './node/node.component';
 
@@ -28,6 +29,7 @@ import { NodeComponent } from './node/node.component';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,7 +16,11 @@
 </ng-container>
 
 <ng-template #Empty>
-  "Exceded Allowed N-Depth"
+  <div class="tupple black-out">
+    Exceeds Allowed N-Depth
+
+  </div>
+  
 
 
 </ng-template>
@@ -45,7 +49,7 @@
       <mat-icon>add</mat-icon>
     </button>
     <ng-container *ngIf="nodeHasChildren()">
-      <button (click)="toggleShowChildren() " mat-icon-button [disabled]="toDelete()">
+      <button (click)="toggleShowChildren() " mat-icon-button [disabled]="toDelete()"  [matTooltip]="this.node.record.Nodes.length + ' Child; At N-' + (this.node.record.Depth + 1)" matTooltipPosition="right">
         <ng-container *ngIf="this.node.ui.show; else ArrowRight">
 
           <mat-icon>keyboard_arrow_down</mat-icon>

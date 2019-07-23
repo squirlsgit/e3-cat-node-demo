@@ -216,7 +216,7 @@ export class Tree {
 
 
   public Filter(Name: string = "", Depth: number = -1) {
-    console.log("bingo");
+    //console.log("bingo");
     for (var iD in this.Map) {
 
       (this.Map[iD].record.Name === Name) && this.Map[iD].record.Depth > Depth? this.displayNode(this.Map, this.Map[iD]): this.hideNode(this.Map, this.Map[iD]);

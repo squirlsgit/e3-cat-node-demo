@@ -26,11 +26,11 @@
 
   <mat-form-field style="width: 40%; margin-left:5%; margin-right:5%" >
 
-    <input matInput type="number" placeholder="Minimum Depth" [(ngModel)]="filter.depth" />
+    <input matInput type="number" placeholder="Maximum N-Depth" [(ngModel)]="filter.depth" />
   </mat-form-field>
     
 
 
   
-  <button style="float:right;" mat-flat-button color="accent"(click)="this.ref.Tree.Filter(filter.name, filter.depth)">Filter Tree</button>
+  <button style="float:right;" mat-flat-button color="accent"(click)="this.ref.filter(filter.name, filter.depth)">Filter Tree</button>
 </div>

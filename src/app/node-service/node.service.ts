@@ -12,6 +12,7 @@ export class NodeService {
     return this.maxDepth;
   }
   public set Depth(value: number) {
+    console.log('val', value);
     if (value <= 0) {
       this.maxDepth = Number.MAX_SAFE_INTEGER;
     } else {
@@ -20,6 +21,7 @@ export class NodeService {
   }
 
   public istooDeepNode(rec: INodeRecord): boolean {
+    console.log("rec depth " + rec.Depth, this.maxDepth);
     return rec.Depth >= this.maxDepth;
   }
   public atMaxDepth(rec: INodeRecord): boolean {
@@ -47,7 +49,8 @@ export class NodeService {
     window.location.reload();
   }
   public filter(Name: string, Depth: number) {
-    this.Tree.Filter(Name, Depth);
+    this.Depth = Depth;
+    this.Tree.Filter(Name);
   }
 
 }
