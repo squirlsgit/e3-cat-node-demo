@@ -1,0 +1,36 @@
+
+
+<div id="treeNodes">
+  <div id="description">
+    <!--I've implemented a basic filter, local storage, and the tree.-->
+    <h4>Categories</h4>
+  </div>
+  <ng-container *ngFor="let nodeId of ref.Tree.Roots">
+
+    <app-node [node]="ref.Tree.Nodes[nodeId]"></app-node>
+
+
+  </ng-container>
+</div>
+<div style="display: flex; justify-content: space-around; margin-top:10vh;">
+  <div><button mat-flat-button color="primary" (click)="newNode()" class="e3-button"><i class="material-icons add-icon">add</i>Add Root Node </button></div>
+  <div><button mat-flat-button color="accent" (click)="saveNodes()" class="e3-button"><i class="material-icons add-icon">save</i>Save Tree</button></div>
+
+</div>
+
+<div id="filterBox">
+  <mat-form-field style="width: 40%;" >
+    <input matInput type="text" placeholder="Category" [(ngModel)]="filter.name" />
+  </mat-form-field>
+
+
+  <mat-form-field style="width: 40%; margin-left:5%; margin-right:5%" >
+
+    <input matInput type="number" placeholder="Minimum Depth" [(ngModel)]="filter.depth" />
+  </mat-form-field>
+    
+
+
+  
+  <button style="float:right;" mat-flat-button color="accent"(click)="this.ref.Tree.Filter(filter.name, filter.depth)">Filter Tree</button>
+</div>

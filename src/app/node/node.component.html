@@ -1,0 +1,70 @@
+
+
+<ng-container *ngIf="node != null || !ref.istooDeepNode(node.record.Id) ; else Empty">
+  <div [style.marginLeft]="'1em'" [style.width]="'calc(100% - 1em)'">
+    <ng-container [ngTemplateOutlet]="NodeCore" [ngTemplateOutletContext]="{name: this.node.record.Name, hasChildren: this.node.hasChildren}"></ng-container>
+    <ng-container *ngIf="this.node.ui.show">
+      <ng-container *ngFor="let nodeId of node.record.Nodes">
+        <app-node [node]="ref.Tree.Nodes[nodeId]"></app-node>
+
+      </ng-container>
+    </ng-container>
+    
+
+  </div>
+
+</ng-container>
+
+<ng-template #Empty>
+  "Exceded Allowed N-Depth"
+
+
+</ng-template>
+
+
+
+
+<ng-template #NodeCore let-name="name" let-delete="signedDelete" let-hasChildren="hasChildren">
+  <div class="tupple">
+
+
+
+    <mat-form-field style="width:10em;">
+      <input matInput (blur)="confirmEdit()" [(ngModel)]="this.node.record.Name"  />
+      <mat-hint *ngIf="this.node.record.Name.length == 0">Please enter a valid name </mat-hint>
+      <mat-hint *ngIf="toDelete()">This node will be deleted.</mat-hint>
+    </mat-form-field>
+
+    <ng-container *ngIf="!toDelete(); else UndoButton">
+      <button class="first" (click)="toggleDeleteNode()" color="warn" mat-icon-button [disabled]="nodeHasChildren()">
+        <mat-icon>remove</mat-icon>
+      </button>
+
+    </ng-container>
+    <button (click)="newNode()" mat-icon-button [disabled]="toDelete()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <ng-container *ngIf="nodeHasChildren()">
+      <button (click)="toggleShowChildren() " mat-icon-button [disabled]="toDelete()">
+        <ng-container *ngIf="this.node.ui.show; else ArrowRight">
+
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </ng-container>
+      </button>
+    </ng-container>
+
+  </div>
+  
+    
+
+</ng-template>
+
+<ng-template #UndoButton>
+
+  <button class="first" (click)="toggleDeleteNode() " color="accent" mat-icon-button>
+    <mat-icon>undo</mat-icon>
+  </button>
+</ng-template>
+<ng-template #ArrowRight>
+  <mat-icon>keyboard_arrow_right</mat-icon>
+</ng-template>
