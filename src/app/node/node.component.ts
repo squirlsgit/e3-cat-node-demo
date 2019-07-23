@@ -45,6 +45,9 @@ export class NodeComponent implements OnInit {
     this.node.ui.show = true;
 
   }
+  public getChildTooltip(): string {
+    return (this.node.record.Nodes.length == 1 ? '1 Child' : (this.node.record.Nodes.length + ' Children')) + ' at N-' + (this.node.record.Depth + 1);
+  }
   public editName() {
     this.node.ui.edit = true;
   }

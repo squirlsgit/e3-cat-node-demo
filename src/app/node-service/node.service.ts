@@ -13,16 +13,16 @@ export class NodeService {
   }
   public set Depth(value: number) {
     console.log('val', value);
-    if (value <= 0) {
+    if (value < 0) {
       this.maxDepth = Number.MAX_SAFE_INTEGER;
     } else {
       this.maxDepth = value;
     }
   }
+  public Name: string = '';
 
   public istooDeepNode(rec: INodeRecord): boolean {
-    console.log("rec depth " + rec.Depth, this.maxDepth);
-    return rec.Depth >= this.maxDepth;
+    return rec.Depth > this.maxDepth;
   }
   public atMaxDepth(rec: INodeRecord): boolean {
     return rec.Depth == this.maxDepth;
@@ -41,7 +41,6 @@ export class NodeService {
   public saveNodes() {
 
     let savedNodes: Array<INodeRecord> = this.Tree.DBRecord;
-    console.log("Saved Nodes", savedNodes);
     localStorage.setItem('Tree', JSON.stringify(<fetchedTree>{ Nodes: savedNodes }));
     //this.Tree = this.fetchNodes();
 
@@ -50,7 +49,14 @@ export class NodeService {
   }
   public filter(Name: string, Depth: number) {
     this.Depth = Depth;
+    this.Name = Name || '';
     this.Tree.Filter(Name);
   }
-
+  public matchesFilterName(value: string): boolean {
+    if (this.Name.length == 0) {
+      return false;
+    } else if(value == this.Name) {
+      return true;
+    }
+  }
 }

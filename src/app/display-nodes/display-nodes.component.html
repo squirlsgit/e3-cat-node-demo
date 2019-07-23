@@ -19,18 +19,20 @@
 </div>
 
 <div id="filterBox">
-  <mat-form-field style="width: 40%;" >
-    <input matInput type="text" placeholder="Category" [(ngModel)]="filter.name" />
-  </mat-form-field>
+  <form (ngSubmit)="this.ref.filter(filter.name, filter.depth)">
+
+    <mat-form-field style="width: 40%;">
+      <input name="name" matInput type="text" placeholder="Category" [(ngModel)]="filter.name" />
+    </mat-form-field>
 
 
-  <mat-form-field style="width: 40%; margin-left:5%; margin-right:5%" >
+    <mat-form-field style="width: 40%; margin-left:20%;" matTooltip="If the depth is 0 or less, then all nodes are shown and editable." matTooltipPosition="above" matTooltipShowDelay="2000" matTooltipHideDelay="1000">
 
-    <input matInput type="number" placeholder="Maximum N-Depth" [(ngModel)]="filter.depth" />
-  </mat-form-field>
-    
+      <input name="maxDepth" matInput type="number" placeholder="Maximum N-Depth" [(ngModel)]="filter.depth" />
+    </mat-form-field>
 
 
+    <button mat-flat-button style="width: 100%" color="accent" (click)="this.ref.filter(filter.name, filter.depth)">Filter Tree</button>
+  </form>
   
-  <button style="float:right;" mat-flat-button color="accent"(click)="this.ref.filter(filter.name, filter.depth)">Filter Tree</button>
 </div>

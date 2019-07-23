@@ -17,9 +17,11 @@ export class DisplayNodesComponent implements OnInit {
   public saveNodes() {
     this.ref.saveNodes();
   }
+  
 }
 
 export class FilterNode {
-  public depth: number = 0;
+  public depth: number = -1;
   public name: string;
+  //public targetDepth: number;
 }

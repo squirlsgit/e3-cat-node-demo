@@ -33,7 +33,7 @@
 
 
 
-    <mat-form-field style="width:10em;">
+    <mat-form-field style="width:10em;" [class.Highlight]="this.ref.matchesFilterName(this.node.record.Name)">
       <input matInput (blur)="confirmEdit()" [(ngModel)]="this.node.record.Name"  />
       <mat-hint *ngIf="this.node.record.Name.length == 0">Please enter a valid name </mat-hint>
       <mat-hint *ngIf="toDelete()">This node will be deleted.</mat-hint>
@@ -45,11 +45,14 @@
       </button>
 
     </ng-container>
-    <button (click)="newNode()" mat-icon-button [disabled]="toDelete()">
+    <button (click)="newNode()" mat-icon-button [disabled]="toDelete() || this.ref.atMaxDepth(this.node.record)">
       <mat-icon>add</mat-icon>
     </button>
     <ng-container *ngIf="nodeHasChildren()">
-      <button (click)="toggleShowChildren() " mat-icon-button [disabled]="toDelete()"  [matTooltip]="this.node.record.Nodes.length + ' Child; At N-' + (this.node.record.Depth + 1)" matTooltipPosition="right">
+      <button (click)="toggleShowChildren() " mat-icon-button [disabled]="toDelete()"
+
+
+              [matTooltip]="getChildTooltip()" matTooltipPosition="right">
         <ng-container *ngIf="this.node.ui.show; else ArrowRight">
 
           <mat-icon>keyboard_arrow_down</mat-icon>
