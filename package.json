@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon",
+    "start": "node server.js",
     "staging": "npm run-script build && npm run-script start",
     "deploy": "npm run-script build && git add . && git commit -am \"Updating code at and publishing to master\" && git push heroku master",
     "build": "ng build",
